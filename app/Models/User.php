@@ -42,6 +42,7 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @method static Builder|User query()
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereEmail($value)
+ * @method static Builder|User whereUsername($value)
  * @method static Builder|User whereEmailVerifiedAt($value)
  * @method static Builder|User whereId($value)
  * @method static Builder|User whereName($value)
@@ -59,6 +60,12 @@ final class User extends Authenticatable
     use HasFactory;
     use InteractsWithUuid;
     use Notifiable;
+
+    const USER_SUP      = 0;
+    const USER_ADMIN    = 1;
+    const USER_DR       = 2;
+    const USER_MEDTECH  = 3;
+    const USER_RECEPTION= 4;
 
     /**
      * The attributes that are mass assignable.

@@ -19,11 +19,11 @@ final class AuthTokenController extends Controller
         $data = $request->validated();
 
         /** @var User $user */
-        $user = User::whereEmail($data['email'])->first();
+        $user = User::whereUsername($data['username'])->first();
 
         if (! Hash::check($data['password'], $user->password)) {
             throw ValidationException::withMessages([
-                'email' => [(string) trans('validation.credentials')],
+                'username' => [(string) trans('validation.credentials')],
             ]);
         }
 

@@ -16,7 +16,7 @@ final class AuthTokenRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email'      => ['required', 'email', 'exists:users'],
+            'username'      => ['required', 'exists:users'],
             'password'   => ['required'],
             'token_name' => ['required', 'alpha_num', 'max:50'],
         ];

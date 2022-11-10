@@ -17,10 +17,11 @@ return new class() extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->uuid()->index();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('username')->unique();
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('level')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -33,6 +34,7 @@ return new class() extends Migration {
      */
     public function down()
     {
+        Schema::dropIfExists('posts');
         Schema::dropIfExists('users');
     }
 };

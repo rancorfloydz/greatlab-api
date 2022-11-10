@@ -1,9 +1,10 @@
 <img src="https://treblle-assets.s3.amazonaws.com/laravel-api-boilerplate.png" alt="Laravel API Boilerplate" align="center">
 
-# Laravel API boilerplate 🚀
+# Initialize 🚀
 
-An awesome boilerplate for your next Laravel 9 based API. It's only goal is to simply **kick-start your API development** and provide you with some of the best practices when building amazing and scalable REST APIs 🔥
-
+- `php run migrate`
+- `php artisan db:seed`
+- 
 ## Features 🍭
 
 ### REST API Best Practices
