@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Api\Accounts\AccountsIndexController;
 use App\Http\Controllers\Api\Posts\{PostsDestroyController, PostsIndexController, PostsShowController, PostsStoreController, PostsUpdateController};
-use App\Http\Controllers\Api\Users\{UsersDestroyController, UsersIndexController, UsersShowController, UsersUpdateController};
+use App\Http\Controllers\Api\Users\{UsersDestroyController, UsersIndexController, UsersShowController, UsersStoreController, UsersUpdateController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'cache.headers:public;max_age=60;etag', 'treblle'])->group(function () {
     Route::prefix('users')->group(function () {
         Route::get('/', UsersIndexController::class)->name('users.index');
+//        Route::post('/', UsersStoreController::class)->name('users.store');
         Route::get('/{user}', UsersShowController::class)->name('users.show');
         Route::match(['put', 'patch'], '/{user}', UsersUpdateController::class)->name('users.update');
         Route::delete('/{user}', UsersDestroyController::class)->name('users.destroy');
@@ -31,5 +33,9 @@ Route::middleware(['auth:sanctum', 'cache.headers:public;max_age=60;etag', 'treb
         Route::get('/{post}', PostsShowController::class)->name('posts.show');
         Route::match(['put', 'patch'], '/{post}', PostsUpdateController::class)->name('posts.update');
         Route::delete('/{post}', PostsDestroyController::class)->name('posts.destroy');
+    });
+
+    Route::prefix('account')->group(function () {
+        Route::get('/', AccountsIndexController::class)->name('account.index');
     });
 });
